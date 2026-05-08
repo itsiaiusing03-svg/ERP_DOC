@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ERP 深入說明：拆解每個模組的任務、上下游、流程銜接與控管點。">
+    <title>ERP 深入說明</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="deep">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="回到首頁">
+        <span class="brand-mark">ERP</span>
+        <span>介紹</span>
+      </a>
+      <nav class="main-nav" aria-label="主要導覽">
+        <a href="simple.html" data-page-link="simple">看簡單說明</a>
+        <a class="nav-action" href="#top" aria-label="移回頂部">↑ 頂部</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="section deep-section" id="deep" aria-labelledby="deep-title">
+        <div class="section-heading">
+          <p class="eyebrow">深入說明</p>
+          <h1 id="deep-title">把每個模組的任務與銜接講清楚</h1>
+          <p>深入說明不依賴圖片，而是拆開每個模組：它負責什麼、從哪裡接資料、交給誰、常見例外是什麼。</p>
+        </div>
+
+        <div class="module-picker">
+          <label for="moduleSelect">選擇模組</label>
+          <select id="moduleSelect"></select>
+        </div>
+
+        <article class="module-detail" id="moduleDetail" aria-live="polite"></article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+    </footer>
+
+    <script src="data/erp-modules.js?v=20260508b"></script>
+    <script src="script.js?v=20260508b"></script>
+  </body>
+</html>

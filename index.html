@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="用簡單說明與深入說明兩個入口介紹 ERP。">
+    <title>ERP 介紹</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="回到首頁">
+        <span class="brand-mark">ERP</span>
+        <span>介紹</span>
+      </a>
+      <nav class="main-nav" aria-label="主要導覽">
+        <a href="simple.html" data-page-link="simple">簡單說明</a>
+        <a href="deep.html" data-page-link="deep">深入說明</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="choice-stage" aria-labelledby="page-title">
+        <img class="choice-bg" src="ERP是什麼說明圖文/06-ERP全流程總覽圖.png" alt="ERP 全流程總覽圖">
+        <div class="choice-content">
+          <p class="eyebrow">先選閱讀方式</p>
+          <h1 id="page-title">ERP 介紹</h1>
+          <p class="lead">只分兩條路：用簡單語言走完整個 ERP 模組流程，或深入看每個模組怎麼接前後段。</p>
+          <div class="entry-actions" aria-label="ERP 介紹入口">
+            <a class="entry-link simple-entry" href="simple.html" data-page-link="simple">
+              <span>簡單說明</span>
+              <small>用所有模組的入門圖走完一遍</small>
+            </a>
+            <a class="entry-link deep-entry" href="deep.html" data-page-link="deep">
+              <span>深入說明</span>
+              <small>看任務、上下游、流程銜接與例外</small>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="lightbox" id="imageLightbox" hidden>
+      <button class="lightbox-close" type="button" aria-label="關閉圖片">×</button>
+      <figure>
+        <img id="lightboxImage" src="" alt="">
+        <figcaption id="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+
+    <footer class="site-footer">
+    </footer>
+
+    <script src="data/erp-modules.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
