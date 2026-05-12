@@ -1013,6 +1013,18 @@ h3 {
   font-size: 2rem;
 }
 
+.module-english {
+  display: inline-block;
+  margin: -4px 0 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 127, 120, 0.08);
+  color: var(--teal);
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
 .module-summary p:last-child {
   margin-bottom: 0;
   color: var(--ink-soft);

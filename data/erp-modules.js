@@ -118,71 +118,81 @@ window.ERP_MODULES = [
     icon: "compass",
     name: "ERP 總覽",
     tagline: "選一個模組進去看",
-    simple: "ERP 是把公司各部門的訂單、庫存、生產、採購與帳務串成同一份資料。下方點任一模組，看它的上下游與作業流程。",  },
+    simple: "ERP 是把公司各部門的訂單、庫存、變壓器生產、採購與帳務串成同一份資料。下方點任一模組，看它的上下游與作業流程。",  },
   {
     id: "sales",
     icon: "receipt",
     name: "銷售訂單",
+    englishName: "OM · Order Management",
     tagline: "把客戶需求轉成公司內部任務",
-    simple: "客戶要買什麼、多少數量、何時交貨，都先記在銷售訂單。後續庫存、採購、生產、出貨與應收帳款都會被它牽動。",  },
+    simple: "客戶要哪一型變壓器、多少台、何時交貨、有沒有客製規格，都先記在銷售訂單。後續庫存、採購、生產、出貨與應收帳款都會被它牽動。",  },
   {
     id: "bom",
     icon: "puzzle",
     name: "BOM與製程資料",
+    englishName: "BOM · Bill of Materials + MFG · Manufacturing",
     tagline: "定義產品要用哪些材料、照哪些工序製造",
-    simple: "BOM（產品用料清單）說明做一個成品需要哪些材料與用量；製程資料說明要經過哪些工序、設備、標準工時與檢驗點。兩者一起提供 MRP、採購補料、生產排程、領料與成本估算使用。",  },
+    simple: "BOM（產品用料清單）說明做一台變壓器需要哪些材料與用量，例如矽鋼片、銅線、絕緣紙、變壓器油、外殼；製程資料說明要經過哪些工序、設備、標準工時與檢驗點，例如裁切、繞線、組裝、含浸、出廠測試。兩者一起提供 MRP、採購補料、生產排程、領料與成本估算使用。",  },
   {
     id: "procurement",
     icon: "cart",
     name: "採購",
+    englishName: "PO · Purchase Order",
     tagline: "把內部需求轉成對供應商的正式下單",
     simple: "採購不是看到缺料就買，而是要確認需求來源、供應商、價格、交期與核准，再變成採購單。",  },
   {
     id: "receiving",
     icon: "inbox",
     name: "驗收與入庫",
+    englishName: "IQC · Incoming Quality Control",
     tagline: "確認到貨正確，才讓庫存正式增加",
     simple: "供應商送來的東西要先核對品項、數量與品質；通過後才入庫，變成可被生產或出貨使用的庫存。",  },
   {
     id: "inventory",
     icon: "package",
     name: "庫存",
+    englishName: "INV · Inventory",
     tagline: "回答有多少、在哪裡、哪些可以用",
-    simple: "庫存不只是總數，還要分清楚可用量、保留量、待驗量、凍結量、在途量，以及批號與儲位。例如倉庫有 100 個，但 60 個被訂單保留、20 個還在待驗，真正可出貨的只有 20 個。",  },
+    simple: "庫存不只是總數，還要分清楚可用量、保留量、待驗量、測試中數量、凍結量、在途量，以及批號、序號與儲位。例如成品倉有 100 台變壓器，但 60 台被訂單保留、20 台還在出廠測試中，真正可出貨的只有 20 台。",  },
   {
     id: "production",
     icon: "factory",
     name: "生產與 MES",
+    englishName: "WO · Work Order + MES · Manufacturing Execution System",
     tagline: "ERP 管計畫，MES 管現場回報",
-    simple: "ERP 安排要做什麼、需要什麼；MES（Manufacturing Execution System，現場執行系統）讓現場回報做到哪裡、良率如何、設備是否停機。",  },
+    simple: "ERP 安排要做哪一批變壓器、需要哪些材料；MES（Manufacturing Execution System，現場執行系統）讓繞線、組裝、含浸、出廠測試等現場工序回報做到哪裡、良率如何、設備是否停機。",  },
   {
     id: "shipping",
     icon: "truck",
     name: "出貨",
     tagline: "把訂單承諾變成實際交付",
-    simple: "出貨會依銷售訂單安排撿貨（從倉庫挑出指定貨品）、包裝、物流與簽收；確認後庫存扣減，後續也會牽動應收帳款。",  },
+    simple: "出貨會依銷售訂單產生出貨單，由倉庫依出貨單取出指定序號的變壓器，並安排包裝、物流與簽收；確認後庫存扣減，後續也會牽動應收帳款。",  },
   {
     id: "accounts-receivable",
     icon: "accounting-ar",
     name: "應收帳款",
+    englishName: "AR · Accounts Receivable",
     tagline: "追蹤客戶欠款、收款與逾期風險",
     simple: "應收帳款從出貨或開票開始，記錄客戶欠公司多少錢。後續要追蹤帳齡、收款沖帳、折讓退貨與壞帳風險。",  },
   {
     id: "accounts-payable",
     icon: "accounting-ap",
     name: "應付帳款",
+    englishName: "AP · Accounts Payable",
     tagline: "確認供應商款項並建立付款依據",
     simple: "應付帳款從採購、驗收與供應商發票而來。它負責確認公司真的該付多少、何時該付，以及付款前是否已完成核准。",  },
   {
     id: "general-ledger",
     icon: "accounting-gl",
     name: "總帳",
+    englishName: "GL · General Ledger",
     tagline: "把每個模組的會計記事本收集起來",
     simple: "總帳把應收帳款、應付帳款、庫存成本、費用與收付款傳票收集起來，最後算出整家公司一段時間賺多少、某一天有多少資產與負債。正式說法是產出試算表、損益表與資產負債表。",  },
   {
     id: "finance",
     icon: "cash",
     name: "財務與現金流",
+    englishName: "CM · Cash Management",
     tagline: "看見什麼時候收錢、付錢與資金缺口",
     simple: "財務把應收帳款、應付帳款、銀行與預算放在一起看，提早知道現金流是否足夠、哪些款項該催收或安排付款。總帳記錄已發生的帳，財務安排錢何時收付。",  }
 ];
@@ -226,7 +236,8 @@ window.ERP_TERM_GLOSSARY = [
   {
     id: "purchase-order",
     term: "採購單",
-    description: "公司對供應商正式下單的文件，會記錄品項、數量、價格、交期、付款條件與交貨地點。"
+    aliases: ["PO", "Purchase Order"],
+    description: "公司對供應商正式下單的文件，會記錄品項、數量、價格、交期、付款條件與交貨地點。英文簡稱 PO（Purchase Order），顧問也常用 PO 泛指整個採購模組。"
   },
   {
     id: "moq",
@@ -314,7 +325,8 @@ window.ERP_TERM_GLOSSARY = [
   {
     id: "work-order",
     term: "工單",
-    description: "生產任務的正式指令，通常記錄要做什麼產品、多少數量、何時完成，以及要用哪些材料與工序。"
+    aliases: ["WO", "Work Order"],
+    description: "生產任務的正式指令，通常記錄要做什麼產品、多少數量、何時完成，以及要用哪些材料與工序。英文簡稱 WO（Work Order）。"
   },
   {
     id: "dispatching",
@@ -628,6 +640,114 @@ window.ERP_TERM_GLOSSARY = [
     term: "匯率評價",
     aliases: ["外幣評價"],
     description: "期末把外幣的應收帳款、應付帳款或銀行存款依當期匯率重新換算為本國幣，產生匯兌損益並更新帳面金額。"
+  },
+  {
+    id: "stock-transfer",
+    term: "調撥",
+    aliases: ["庫存調撥", "倉間調撥"],
+    description: "把貨品從同公司某個倉庫或儲位搬到另一個倉庫或儲位；不是買賣，只是內部位置移動，會同步更新兩邊的庫存數量。"
+  },
+  {
+    id: "manufacturing-order",
+    term: "製令",
+    aliases: ["製造令", "製令單"],
+    description: "工單的別稱，指生產任務的正式指令；同一概念，部分 ERP 或公司習慣稱為製令。"
+  },
+  {
+    id: "transfer-posting",
+    term: "拋轉",
+    aliases: ["拋轉傳票", "拋轉總帳"],
+    description: "把某個模組（如應收、應付、庫存）整理好的傳票或結果資料，傳送到下一個模組（通常是總帳或財務）正式入帳的動作。"
+  },
+  {
+    id: "financing",
+    term: "融資",
+    aliases: ["短期融資", "銀行融資"],
+    description: "向銀行或金融機構借錢以支應營運或投資需求；常見如短期週轉金、信用額度動用、應收帳款融資。"
+  },
+  {
+    id: "short-term-investment",
+    term: "短投",
+    aliases: ["短期投資"],
+    description: "把暫時用不到的資金投入短期金融商品（例如定存、票券、貨幣基金），讓閒置現金產生利息或收益，需要用時可快速變現。"
+  },
+  {
+    id: "cash-position",
+    term: "現金部位",
+    aliases: ["現金水位"],
+    description: "目前公司手上可立即動用的現金總量，包含銀行存款與約當現金；用來判斷今天、本週是否有足夠資金支付。"
+  },
+  {
+    id: "bank-line-utilization",
+    term: "銀行額度使用率",
+    aliases: ["授信額度使用率"],
+    description: "已動用的銀行貸款或授信額度占銀行核給總額度的比例；比例越高代表可再借的空間越少，是觀察資金緊張程度的指標。"
+  },
+  {
+    id: "allowance-for-doubtful",
+    term: "備抵",
+    aliases: ["備抵呆帳", "備抵壞帳"],
+    description: "先估計一筆應收帳款可能收不回來的金額，預先在帳上提列為減項；實際發生壞帳時直接沖銷，不影響當期損益太大。"
+  },
+  {
+    id: "impairment",
+    term: "減損",
+    aliases: ["資產減損", "存貨跌價"],
+    description: "資產（如機器、商譽、存貨）因為市價下跌、使用價值降低或無法回收，把帳上金額調降到合理價值，差額認列為損失。"
+  },
+  {
+    id: "accrual",
+    term: "應計",
+    aliases: ["應計項目", "accrual"],
+    description: "已經發生但還沒收到帳單或還沒實際收付款的收入或費用，在期末先估列入帳，讓報表反映真正屬於該期間的損益（例如月底已用但還沒收到水電費發票）。"
+  },
+  {
+    id: "reclassification",
+    term: "重分類",
+    aliases: ["科目重分類"],
+    description: "把已經記在某個科目的金額，因性質、期間或政策改變，重新移到另一個科目；常見於期末調整，例如把長期負債到期一年內的部分轉為流動負債。"
+  },
+  {
+    id: "om-order-management",
+    term: "OM",
+    aliases: ["Order Management"],
+    description: "Order Management，銷售訂單／訂單管理模組的英文簡稱；負責處理客戶訂單、報價、信用、交期承諾與訂單狀態。"
+  },
+  {
+    id: "mfg-manufacturing",
+    term: "MFG",
+    aliases: ["Manufacturing"],
+    description: "Manufacturing，製造／製程的英文簡稱；在 ERP 中通常涵蓋製程資料、製程路線、工序、工作中心與標準工時等與「怎麼做」相關的主檔。"
+  },
+  {
+    id: "iqc-incoming-quality",
+    term: "IQC",
+    aliases: ["Incoming Quality Control", "進料檢驗"],
+    description: "Incoming Quality Control，進料檢驗的英文簡稱；指供應商交貨進廠時，對品項、規格、數量與品質進行檢查並判定允收、特採或拒收。"
+  },
+  {
+    id: "inv-inventory",
+    term: "INV",
+    aliases: ["Inventory"],
+    description: "Inventory，庫存模組的英文簡稱；管理倉庫、儲位、批號、可用量／保留量／待驗量／凍結量／在途量等庫存狀態。"
+  },
+  {
+    id: "cm-cash-management",
+    term: "CM",
+    aliases: ["Cash Management"],
+    description: "Cash Management，現金管理／資金管理的英文簡稱；常作為財務模組的英文代稱，負責收付款排程、銀行對帳、現金流預測與資金調度。"
+  },
+  {
+    id: "transformer-testing",
+    term: "變壓器測試",
+    aliases: ["出廠測試", "成品測試"],
+    description: "變壓器完工後在出廠前進行的電氣與安全測試，常見項目包含匝數比、絕緣阻抗、耐壓、無載損耗、負載損耗與溫升等；通過測試的變壓器才會從測試中庫存轉為可出貨庫存，並對應到指定的出廠序號。"
+  },
+  {
+    id: "delivery-order",
+    term: "出貨單",
+    aliases: ["Delivery Order", "DO"],
+    description: "依銷售訂單與客戶交期建立的內部出貨指令，記錄要出哪一張訂單、哪些品項、數量、指定序號與包裝要求；倉庫依此單從儲位取出變壓器、扣減庫存並交給物流。"
   }
 ];
 
@@ -788,24 +908,29 @@ window.ERP_DEEP_GUIDE = {
       fromNote: "所有會讓庫存數量改變的單據都會進來。",
       role: "維護可用量、保留量與倉儲狀態",
       roleNote: "不只看總數，還要知道哪些能用、哪些已被保留或凍結。",
-      to: "銷售承諾、生產齊套、出貨撿貨與存貨金額",
-      toNote: "業務、生產、倉庫與總帳都依這裡的數量判斷。"
+      to: "銷售承諾、生產領料、變壓器測試、出貨單與存貨金額",
+      toNote: "業務、生產、品保、倉庫與總帳都依這裡的數量判斷。"
     },    deepLayout: "inventory-independent",
     sections: [
       {
         type: "summary",
         heading: "庫存",
-        text: "庫存模組維護每個品項在倉庫、儲位、批號與狀態下的數量。重點不是帳上總數，而是分清楚哪些現在可用、哪些已保留、待驗或凍結。",
-        mission: "維護可信的數量狀態，支援銷售承諾、生產齊套、出貨撿貨與存貨金額。"
+        text: "庫存模組維護每個變壓器與材料在倉庫、儲位、批號與序號下的數量。重點不是帳上總數，而是分清楚哪些現在可用、哪些已保留、待驗、測試中或凍結。",
+        mission: "維護可信的數量狀態，支援銷售承諾、生產領料、變壓器測試與出貨單作業。"
       },
       {
         type: "columns",
         title: "庫存要回答的三件事",
         columns: [
-          { title: "能不能用", items: ["可用量", "保留量", "待驗量", "凍結量"] },
+          { title: "能不能用", items: ["可用量", "保留量", "待驗量", "測試中數量", "凍結量"] },
           { title: "在哪裡", items: ["倉庫與儲位", "批號與序號", "效期與 FIFO"] },
-          { title: "怎麼變動", items: ["入庫與完工", "出貨、領料與退料", "調撥、盤點與調整"] }
+          { title: "怎麼變動", items: ["入庫與完工", "領料與退料", "變壓器測試前後狀態切換", "出貨單與調撥", "盤點調整"] }
         ]
+      },
+      {
+        type: "callout",
+        title: "變壓器測試與庫存狀態",
+        text: "變壓器完工先掛在「測試中」狀態，通過出廠測試後才轉為可用庫存；不合格則改為凍結或重工，不能直接出貨單拋轉。"
       },
       {
         type: "flow",
@@ -815,7 +940,7 @@ window.ERP_DEEP_GUIDE = {
       {
         type: "risk",
         title: "只保留需要處理的例外",
-        items: ["帳上有貨但現場找不到", "已保留量被其他流程使用", "負庫存或未授權調整", "批號、效期或盤點差異未覆核"]
+        items: ["帳上有貨但現場找不到", "已保留量被其他流程使用", "負庫存或未授權調整", "測試中數量未轉成可用就被拋轉到出貨單", "批號、序號或盤點差異未複查"]
       }
     ]
   },
@@ -962,7 +1087,7 @@ window.ERP_DEEP_GUIDE = {
         title: "判斷重點",
         columns: [
           { title: "到貨比對", items: ["採購單、送貨單與實物一致", "超收或短收先標記差異"] },
-          { title: "品質狀態", items: ["允收：可入庫", "待判 / 特採：隔離或凍結", "拒收：退貨或補交"] },
+          { title: "品質狀態", items: ["允收：可入庫", "特採：隔離或凍結", "拒收：退貨或補交"] },
           { title: "下游影響", items: ["只讓合格數量增加庫存", "驗收結果提供應付帳款比對"] }
         ]
       },
@@ -986,10 +1111,10 @@ window.ERP_DEEP_GUIDE = {
   bom: {
     mission: "維護產品用料結構與製程路線，讓生產、採購、成本與工程變更都使用同一份標準。",
     position: {
-      from: "產品設計、工程變更、品號與工作中心",
+      from: "產品設計、工程變更與品號",
       fromNote: "先決定成品由哪些材料組成、要經過哪些工序，以及版本何時生效。",
       role: "維護材料階層、製程路線、標準工時與版本",
-      roleNote: "BOM 是產品用料清單；製程資料是製造順序、工作中心與標準工時。",
+      roleNote: "BOM 是產品用料清單；製程資料是製造順序、工序與標準工時。",
       to: "MRP、採購、生產領料、排程派工與成本估算",
       toNote: "後續缺料計算、領料清單、工序安排與標準成本都依這裡展開。"
     },    deepLayout: "bom-independent",
@@ -1005,7 +1130,7 @@ window.ERP_DEEP_GUIDE = {
         title: "主檔、版本、工程變更與成本",
         text: "重點是讓現場、採購與成本都用到正確版本。",
         columns: [
-          { title: "主檔", items: ["材料階層與標準用量", "製程路線與工作中心"] },
+          { title: "主檔", items: ["材料階層與標準用量", "製程路線與工序"] },
           { title: "版本", items: ["BOM / 製程版本", "生效日與停用日"] },
           { title: "工程變更", items: ["替代料核准", "現場切換通知"] },
           { title: "成本影響", items: ["材料用量", "標準工時", "差異分析"] }
@@ -1027,14 +1152,14 @@ window.ERP_DEEP_GUIDE = {
       {
         type: "risk",
         title: "常見例外",
-        items: ["版本用錯", "替代料未核准", "用量或工時不準", "工程變更未同步", "工序或工作中心設定錯誤"]
+        items: ["版本用錯", "替代料未核准", "用量或工時不準", "工程變更未同步", "工序設定錯誤"]
       }
     ]
   },
   production: {
     mission: "把工單轉成可執行排程，並讓現場結果同步更新 ERP。",
     position: {
-      from: "工單、BOM與製程資料、材料齊套狀態",
+      from: "工單、BOM與製程資料、材料備齊狀態",
       fromNote: "先確認要做什麼、用哪些材料、照哪些工序，以及材料是否備齊。",
       role: "排程派工並回報現場進度、良率與異常",
       roleNote: "把計畫交給現場，並收回實際數量、工時與異常。",
@@ -1053,7 +1178,7 @@ window.ERP_DEEP_GUIDE = {
         type: "columns",
         title: "三段分工",
         columns: [
-          { title: "ERP 事前計畫", items: ["工單與交期", "BOM / 製程版本", "材料齊套"] },
+          { title: "ERP 事前計畫", items: ["工單與交期", "BOM / 製程版本", "材料備齊"] },
           { title: "MES 現場回報", items: ["派工與開工", "完工數量", "工時與異常"] },
           { title: "ERP 事後更新", items: ["完工入庫", "工單狀態", "用料與成本"] }
         ]
@@ -1066,17 +1191,17 @@ window.ERP_DEEP_GUIDE = {
       {
         type: "risk",
         title: "常見例外",
-        items: ["材料未齊套", "設備停機", "良率異常", "工時回報不合理", "現場回報延遲"]
+        items: ["材料未備齊", "設備停機", "良率異常", "工時回報不合理", "現場回報延遲"]
       }
     ]
   },
   shipping: {
-    mission: "依銷售訂單把正確產品交給客戶，並讓庫存與帳務同步更新。",
+    mission: "依銷售訂單把正確的變壓器交給客戶，並讓庫存與帳務同步更新。",
     position: {
       from: "銷售訂單、出貨排程與庫存可用量",
       fromNote: "先確認客戶要出哪些貨，以及倉庫是否真的可出。",
-      role: "撿貨、覆核、包裝並確認實際交付",
-      roleNote: "撿貨是挑出貨品，覆核是出貨前再核對一次。",
+      role: "依出貨單備貨、包裝並確認實際交付",
+      roleNote: "以出貨單為單據依據，從倉庫取出指定序號的變壓器並包裝交運。",
       to: "庫存扣減、訂單結案、應收帳款或發票資料",
       toNote: "出貨確認後，庫存會減少，應收帳款也取得立帳依據。"
     },    deepLayout: "shipping-independent",
@@ -1085,7 +1210,7 @@ window.ERP_DEEP_GUIDE = {
         type: "summary",
         heading: "出貨",
         text: "出貨把銷售承諾變成實際交付，同步扣減庫存並提供應收帳款依據。",
-        mission: "依銷售訂單與庫存可用量安排撿貨、覆核、包裝、物流、簽收與退貨。"
+        mission: "依銷售訂單與庫存可用量產生出貨單，安排包裝、物流、簽收與退貨。"
       },
       {
         type: "flow",
@@ -1095,7 +1220,7 @@ window.ERP_DEEP_GUIDE = {
       {
         type: "risk",
         title: "常見例外",
-        items: ["撿錯貨或數量錯誤", "客戶信用未通過（銷售訂單與出貨前各核一次）", "物流延誤、拒收或退貨", "出貨後應收帳款資料不完整"]
+        items: ["出貨單序號或數量錯誤", "客戶信用未通過（銷售訂單與出貨前各核一次）", "物流延誤、拒收或退貨", "出貨後應收帳款資料不完整"]
       }
     ]
   },
@@ -1468,18 +1593,19 @@ window.ERP_EXECUTION_FLOWS = {
     },
     {
       title: "提供查詢依據",
-      description: "把同一份狀態給銷售、生產、採購、出貨與財務查用。",
-      output: "承諾量、齊套、補貨、撿貨、存貨金額",
+      description: "把同一份狀態給銷售、生產、採購、品保、出貨與財務查用。",
+      output: "承諾量、領料、補貨、出貨單、存貨金額",
       sections: [
         {
           type: "table",
-          title: "各模組關心的庫存資料", 
+          title: "各模組關心的庫存資料",
           headers: ["模組", "看什麼", "何時看"],
           rows: [
             ["銷售", "可承諾量", "報價、接單、確認交期時"],
-            ["生產", "齊套狀態", "排程、領料、開工前"],
+            ["生產", "材料備齊狀態", "排程、領料、開工前"],
+            ["品保", "測試中數量與序號", "變壓器測試與後續轉態時"],
             ["採購", "安全庫存與在途量", "產生補貨建議時"],
-            ["出貨", "撿貨依據", "撿貨單建立時"],
+            ["出貨", "可出貨數量與序號", "出貨單建立時"],
             ["財務", "存貨金額", "結帳與報表時"]
           ]
         }
@@ -1490,7 +1616,7 @@ window.ERP_EXECUTION_FLOWS = {
       description: "帳實不一致時，先找原因，核准後再調整。",
       output: "盤點差異與調整紀錄",
       sections: [
-        { type: "callout", title: "盤點重點", text: "不要只改數字。差異要留下原因、覆核與核准紀錄，避免同樣問題重複發生。" }
+        { type: "callout", title: "盤點重點", text: "不要只改數字。差異要留下原因、複查與核准紀錄，避免同樣問題重複發生。" }
       ]
     }
   ],
@@ -1595,7 +1721,7 @@ window.ERP_EXECUTION_FLOWS = {
     },
     {
       title: "品質判定",
-      description: "依品檢規則決定允收、特採、待判或拒收。",
+      description: "依品檢規則決定允收、特採或拒收。",
       output: "品檢紀錄",
       sections: [
         {
@@ -1604,7 +1730,7 @@ window.ERP_EXECUTION_FLOWS = {
           headers: ["判定", "入庫狀態", "後續動作"],
           rows: [
             ["允收", "正式入庫", "庫存增加"],
-            ["特採 / 待判", "隔離或凍結", "核准後才可用"],
+            ["特採", "隔離或凍結", "核准後才可用"],
             ["拒收", "不入庫", "退貨或補交"]
           ]
         }
@@ -1646,7 +1772,7 @@ window.ERP_EXECUTION_FLOWS = {
     },
     {
       title: "建立 BOM 與製程",
-      description: "設定用料、損耗、工序、工作中心與標準工時。",
+      description: "設定用料、損耗、工序與標準工時。",
       output: "BOM 與製程主檔",
       sections: [
         {
@@ -1654,7 +1780,7 @@ window.ERP_EXECUTION_FLOWS = {
           title: "名詞解釋", 
           items: [
             { term: "BOM", note: "做一個成品要用哪些材料與數量。" },
-            { term: "製程路線", note: "產品要經過哪些工序與工作中心。" }
+            { term: "製程路線", note: "產品要經過哪些工序。" }
           ]
         },
         {
@@ -1706,7 +1832,7 @@ window.ERP_EXECUTION_FLOWS = {
   production: [
     {
       title: "ERP｜確認工單條件",
-      description: "確認工單、BOM、製程路線與材料齊套是否足夠開工。",
+      description: "確認工單、BOM、製程路線與材料是否足夠開工。",
       output: "可排程工單",
       sections: [
         {
@@ -1715,7 +1841,7 @@ window.ERP_EXECUTION_FLOWS = {
           items: [
             "工單數量與交期",
             "有效 BOM / 製程版本",
-            "材料齊套與品質要求"
+            "材料備齊與品質要求"
           ]
         }
       ]
@@ -1732,7 +1858,7 @@ window.ERP_EXECUTION_FLOWS = {
             { title: "排程", items: [
                 "交期與優先序",
                 "產能與班別",
-                "材料齊套狀態"
+                "材料備齊狀態"
               ] },
             { title: "派工", items: [
                 "哪台機 / 哪條線",
@@ -1813,13 +1939,13 @@ window.ERP_EXECUTION_FLOWS = {
       ]
     },
     {
-      title: "產生撿貨任務",
-      description: "依倉庫、儲位、批號、效期與出貨規則產生撿貨單；撿貨就是從倉庫挑出指定貨品。",
-      output: "撿貨單",
+      title: "產生出貨單",
+      description: "依銷售訂單、客戶交期與已通過測試的變壓器庫存產生出貨單，註明指定序號。",
+      output: "出貨單",
       sections: [
         {
           type: "columns",
-          title: "撿貨任務的兩面向", 
+          title: "出貨單的兩面向",
           columns: [
             { title: "依據", items: [
                 "銷售訂單",
@@ -1828,36 +1954,36 @@ window.ERP_EXECUTION_FLOWS = {
                 "物流班次"
               ] },
             { title: "規則", items: [
-                "儲位順序（節省走動）",
-                "批號 / 序號 / 效期",
-                "混裝或分箱規則"
+                "指定變壓器序號",
+                "批號與出廠測試紀錄",
+                "客戶指定包裝"
               ] }
           ]
         },
         {
           type: "list",
-          title: "產生撿貨單時順便", 
+          title: "產生出貨單時要確認",
           items: [
-            "檢查可用量是否足夠",
-            "預留批號或序號",
-            "安排撿貨人員"
+            "可出貨數量是否足夠（已通過測試）",
+            "預留指定序號",
+            "通知倉庫與包裝人員"
           ]
         }
       ]
     },
     {
-      title: "撿貨與覆核",
-      description: "倉庫撿貨後核對品項、數量、批號、序號與包裝要求；覆核就是出貨前再次確認。",
-      output: "覆核完成的出貨品",
+      title: "依出貨單備貨",
+      description: "倉庫依出貨單從儲位取出指定序號的變壓器，並核對批號、測試紀錄與包裝要求。",
+      output: "備妥的出貨品",
       sections: [
-        { type: "callout", title: "覆核要看的事", text: "出貨前最後一道把關：品項、數量、批號、序號、客戶指定包裝是否都對；錯了寄出去，客訴或退貨成本都很高。" },
+        { type: "callout", title: "備貨時要看的事", text: "確認出貨單上的品項、數量、序號、批號與測試紀錄與實際取出的變壓器一致；錯了寄出去，客訴或退貨成本都很高。" },
         {
           type: "list",
-          title: "常見覆核錯誤", 
+          title: "常見備貨錯誤",
           items: [
             "品項對但數量錯",
-            "批號錯（客戶要指定批）",
-            "客戶要的標籤或包裝缺漏"
+            "序號或批號取錯（客戶要指定序號）",
+            "客戶要的標籤、銘牌或包裝缺漏"
           ]
         }
       ]
@@ -1865,11 +1991,11 @@ window.ERP_EXECUTION_FLOWS = {
     {
       title: "包裝與物流",
       description: "完成裝箱、出貨文件、物流交接與追蹤資料。",
-      output: "裝箱單、物流單與出貨單",
+      output: "裝箱單、物流單與簽收依據",
       sections: [
         {
           type: "table",
-          title: "包裝物流動作對應文件", 
+          title: "包裝物流動作對應文件",
           headers: ["動作", "產生文件", "交給誰"],
           rows: [
             ["裝箱完成", "裝箱單", "客戶 / 報關"],

@@ -141,6 +141,22 @@
     return moduleMetaById.get(id)?.icon || moduleIconFallbacks[id] || "";
   }
 
+  function getModuleAbbreviation(module) {
+    if (!module || !module.englishName) return "";
+    // englishName 格式：「ABBR · Full Name」或「ABBR1 · Full1 + ABBR2 · Full2」
+    return module.englishName
+      .split(" + ")
+      .map((part) => part.split(" · ")[0].trim())
+      .filter(Boolean)
+      .join(" + ");
+  }
+
+  function getModuleDisplayName(module) {
+    if (!module) return "";
+    const abbr = getModuleAbbreviation(module);
+    return abbr ? `${module.name}（${abbr}）` : module.name;
+  }
+
   function renderModuleIcon(id) {
     const iconKey = getModuleIconKey(id);
     const svg = moduleIconSvgs[iconKey];
@@ -473,10 +489,15 @@
   }
 
   function renderCustomSummary(module, deep, section) {
+    const baseHeading = section.heading || module.name;
+    const abbr = getModuleAbbreviation(module);
+    // 當 heading 為模組預設中文名時自動接上英文簡稱；若資料有刻意客製化的 heading 則保留原樣
+    const headingText = abbr && baseHeading === module.name ? `${baseHeading}（${abbr}）` : baseHeading;
     return `
       <section class="module-summary custom-summary" data-section-type="summary">
         ${section.eyebrow ? `<p class="eyebrow">${decorateModuleMentions(section.eyebrow)}</p>` : `<p class="eyebrow">${decorateModuleMentions(module.tagline)}</p>`}
-        <h3>${renderModuleLabel(module.id, section.heading || module.name)}</h3>
+        <h3>${renderModuleLabel(module.id, headingText)}</h3>
+        ${module.englishName ? `<p class="module-english">${decorateModuleMentions(module.englishName)}</p>` : ""}
         <p>${decorateModuleMentions(section.text || module.simple)}</p>
         ${section.mission || deep.mission ? `<p class="mission"><strong>核心任務：</strong>${decorateModuleMentions(section.mission || deep.mission)}</p>` : ""}
       </section>
@@ -741,7 +762,7 @@
   function setupModuleSelect() {
     if (!moduleSelect) return;
     moduleSelect.innerHTML = modules
-      .map((module) => `<option value="${module.id}">${module.name}</option>`)
+      .map((module) => `<option value="${module.id}">${escapeHtml(getModuleDisplayName(module))}</option>`)
       .join("");
     setupSelectIcon(moduleSelect);
     moduleSelect.addEventListener("change", () => {
@@ -755,9 +776,9 @@
     const storySteps = [
       { title: "客戶下單", text: "銷售訂單先記下品項、數量、價格、交期與信用條件。" },
       { title: "確認能不能交", text: "庫存先看可用量，不夠就交給採購補料或生產安排。" },
-      { title: "採購入庫", text: "採購下單，供應商到貨後由驗收確認品質，再正式增加庫存。" },
-      { title: "生產完工", text: "BOM 與製程資料告訴現場怎麼做，MES 回報進度與良率。" },
-      { title: "出貨收款", text: "出貨扣庫存，應收帳款建立客戶欠款並追蹤收款沖帳。" },
+      { title: "採購入庫", text: "採購下單，供應商到貨後由驗收確認品質，正式增加庫存，應付帳款依驗收與發票建立公司欠款。" },
+      { title: "生產完工", text: "BOM 與製程資料告訴現場怎麼做，MES 回報進度與良率，變壓器完工後還要通過變壓器測試才會轉成可出貨庫存。" },
+      { title: "出貨收款", text: "依出貨單從庫存取出指定序號的變壓器，出貨扣庫存，應收帳款建立客戶欠款並追蹤收款沖帳。" },
       { title: "看帳與現金", text: "總帳產出正式報表，財務預估何時收錢、付錢與是否有資金缺口。" }
     ];
     const misconceptions = [
@@ -777,7 +798,7 @@
           >
             <span class="overview-card-icon">${renderModuleIcon(item.id)}</span>
             <span class="overview-card-body">
-              <strong>${item.name}</strong>
+              <strong>${escapeHtml(getModuleDisplayName(item))}</strong>
               <small>${decorateModuleMentions(item.tagline || "", { glossary: false })}</small>
             </span>
             <span class="overview-card-arrow" aria-hidden="true">›</span>
