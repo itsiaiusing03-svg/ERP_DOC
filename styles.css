@@ -775,14 +775,34 @@ h3 {
 }
 
 .custom-flow-section {
+  border-color: rgba(0, 127, 120, 0.28);
+}
+
+.custom-flow-section > .custom-section-heading {
+  margin-bottom: 18px;
+}
+
+.custom-flow-section .execution-flow {
   padding: 0;
   border: 0;
   background: transparent;
   box-shadow: none;
 }
 
-.custom-flow-section > .custom-section-heading {
-  padding: 0 2px;
+.custom-callout {
+  border-color: rgba(176, 95, 47, 0.28);
+  background: #fffaf5;
+}
+
+.custom-callout h4 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.custom-callout p {
+  margin: 0;
+  color: var(--ink-soft);
 }
 
 .overview-hub {

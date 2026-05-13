@@ -685,7 +685,7 @@
         return renderCustomDefinitionsSection(section);
       case "callout":
         return `
-          <section class="detail-callout custom-callout" data-section-type="callout">
+          <section class="custom-section detail-callout custom-callout" data-section-type="callout">
             <h4>${decorateModuleMentions(section.title)}</h4>
             <p>${decorateModuleMentions(section.text)}</p>
           </section>
