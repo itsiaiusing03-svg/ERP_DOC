@@ -33,7 +33,8 @@
     "accounts-receivable": "accounting-ar",
     "accounts-payable": "accounting-ap",
     "general-ledger": "accounting-gl",
-    finance: "cash"
+    finance: "cash",
+    "foreign-trade": "globe"
   };
 
   const moduleIconSvgs = {
@@ -49,7 +50,8 @@
     "accounting-ar": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path><path d="M6 21v-2a4 4 0 0 1 4 -4h3"></path><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path><path d="M19 21v1m0 -8v1"></path></svg>',
     "accounting-ap": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"></path><path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path><path d="M12 17v1m0 -8v1"></path></svg>',
     "accounting-gl": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14"></path><path d="M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14"></path><path d="M5 8h4"></path><path d="M9 16h4"></path><path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041"></path><path d="M14 9l4 -1"></path><path d="M16 16l3.923 -.98"></path></svg>',
-    cash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="3"></circle><path d="M6 9h.01"></path><path d="M18 15h.01"></path></svg>'
+    cash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="3"></circle><path d="M6 9h.01"></path><path d="M18 15h.01"></path></svg>',
+    globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a13.6 13.6 0 0 1 0 18"></path><path d="M12 3a13.6 13.6 0 0 0 0 18"></path></svg>'
   };
 
   const moduleAliases = {
@@ -64,7 +66,8 @@
     "accounts-receivable": ["應收帳款", "應收", "AR"],
     "accounts-payable": ["應付帳款", "應付", "AP"],
     "general-ledger": ["總帳", "GL", "會計"],
-    finance: ["財務與現金流", "現金流", "財務"]
+    finance: ["財務與現金流", "現金流", "財務"],
+    "foreign-trade": ["國外訂單作業", "外銷", "Foreign Trade"]
   };
 
   const moduleMetaById = new Map();
@@ -615,6 +618,48 @@
     `;
   }
 
+  function renderCustomTableSection(section) {
+    const headers = section.headers || [];
+    const rows = section.rows || [];
+    if (!rows.length) return "";
+    return `
+      <section class="custom-section custom-table-section ${section.variant || ""}" data-section-type="${section.type || "table"}">
+        ${renderSectionHeader(section)}
+        <div class="flow-step-table-wrapper">
+          <table class="flow-step-table">
+            ${
+              headers.length
+                ? `<thead><tr>${headers
+                    .map((h) => `<th>${decorateModuleMentions(h)}</th>`)
+                    .join("")}</tr></thead>`
+                : ""
+            }
+            <tbody>
+              ${rows
+                .map(
+                  (row) =>
+                    `<tr>${row
+                      .map((cell) => `<td>${decorateModuleMentions(cell)}</td>`)
+                      .join("")}</tr>`
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderCustomDefinitionsSection(section) {
+    if (!section.items || !section.items.length) return "";
+    return `
+      <section class="custom-section custom-definitions-section ${section.variant || ""}" data-section-type="${section.type || "definitions"}">
+        ${renderSectionHeader(section)}
+        ${renderStepDefinitions(section.items)}
+      </section>
+    `;
+  }
+
   function renderCustomSection(module, deep, section) {
     switch (section.type) {
       case "summary":
@@ -634,6 +679,10 @@
         return renderCustomScenario(section);
       case "compare":
         return renderCustomCompare(section);
+      case "table":
+        return renderCustomTableSection(section);
+      case "definitions":
+        return renderCustomDefinitionsSection(section);
       case "callout":
         return `
           <section class="detail-callout custom-callout" data-section-type="callout">
