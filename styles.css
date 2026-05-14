@@ -85,33 +85,42 @@ select {
   justify-content: flex-end;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav button {
   min-height: 38px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 0 12px;
+  border: 1px solid var(--line);
   border-radius: 6px;
+  background: rgba(255, 255, 255, 0.62);
   color: var(--ink-soft);
   font-weight: 800;
   text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(25, 32, 38, 0.04);
 }
 
 .main-nav .nav-action {
-  margin-left: 6px;
-  padding-left: 14px;
-  border-left: 1px solid var(--line);
+  margin-left: 0;
 }
 
 .main-nav a:hover,
-.main-nav a:focus-visible {
+.main-nav a:focus-visible,
+.main-nav button:hover,
+.main-nav button:focus-visible {
   color: var(--ink);
-  background: var(--soft);
+  background: var(--surface);
+  border-color: #c7d0c8;
   outline: none;
 }
 
 .main-nav a[aria-current="page"] {
   color: var(--ink);
   background: #eaf7f3;
+  border-color: #cfe4dc;
 }
 
 .choice-stage {

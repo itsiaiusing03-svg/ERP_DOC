@@ -25,6 +25,7 @@
     overview: "compass",
     sales: "receipt",
     bom: "puzzle",
+    mrp: "calculator",
     procurement: "cart",
     receiving: "inbox",
     inventory: "package",
@@ -41,6 +42,7 @@
     compass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8 4.8-2.2Z"></path></svg>',
     receipt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.2-2 1.2-2-1.2-2 1.2-2-1.2L6 21V3Z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path><path d="M9 16h4"></path></svg>',
     puzzle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h4a2 2 0 1 0 4 0h4v6a2 2 0 1 0 0 4v6h-6a2 2 0 1 1-4 0H4v-4a2 2 0 1 0 0-4V8h4V4Z"></path></svg>',
+    calculator: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8 7h8"></path><path d="M8 12h.01"></path><path d="M12 12h.01"></path><path d="M16 12h.01"></path><path d="M8 16h.01"></path><path d="M12 16h.01"></path><path d="M16 16h.01"></path></svg>',
     cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2.2 10.5a2 2 0 0 0 2 1.5h7.3a2 2 0 0 0 2-1.6L21 8H7"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg>',
     inbox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h4l2 3h4l2-3h4"></path><path d="M5 13 7 5h10l2 8v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-6Z"></path><path d="M12 5v7"></path><path d="m9 9 3 3 3-3"></path></svg>',
     package: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 9-4 9 4-9 4-9-4Z"></path><path d="M3 7v10l9 4 9-4V7"></path><path d="M12 11v10"></path><path d="m7.5 5 9 4"></path></svg>',
@@ -58,6 +60,7 @@
     overview: ["ERP 總覽", "ERP 是什麼"],
     sales: ["銷售訂單", "銷售"],
     bom: ["BOM與製程資料", "BOM 與製程資料", "BOM（產品用料清單）", "產品用料清單", "製程資料", "製程路線", "BOM"],
+    mrp: ["MRP 材料需求計算", "MRP", "材料需求計算", "Material Requirements Planning"],
     procurement: ["採購"],
     receiving: ["驗收與入庫", "驗收入庫", "驗收", "入庫"],
     inventory: ["庫存"],
@@ -270,8 +273,8 @@
     return `
       <dl class="step-definitions">
         ${definitions
-          .map((item) => `<div><dt>${decorateModuleMentions(item.term)}</dt><dd>${decorateModuleMentions(item.note)}</dd></div>`)
-          .join("")}
+        .map((item) => `<div><dt>${decorateModuleMentions(item.term)}</dt><dd>${decorateModuleMentions(item.note)}</dd></div>`)
+        .join("")}
       </dl>
     `;
   }
@@ -323,16 +326,16 @@
         ${renderStepSectionTitle(section)}
         <div class="flow-step-columns">
           ${columns
-            .map(
-              (column) => `
+        .map(
+          (column) => `
                 <div class="flow-step-column">
                   ${column.title ? `<span class="flow-step-column-title">${decorateModuleMentions(column.title)}</span>` : ""}
                   ${column.text ? `<p>${decorateModuleMentions(column.text)}</p>` : ""}
                   ${column.items && column.items.length ? renderList(column.items, "plain-list compact-list") : ""}
                 </div>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
       </section>
     `;
@@ -376,22 +379,21 @@
         ${renderStepSectionTitle(section)}
         <div class="flow-step-table-wrapper">
           <table class="flow-step-table">
-            ${
-              headers.length
-                ? `<thead><tr>${headers
-                    .map((h) => `<th>${decorateModuleMentions(h)}</th>`)
-                    .join("")}</tr></thead>`
-                : ""
-            }
+            ${headers.length
+        ? `<thead><tr>${headers
+          .map((h) => `<th>${decorateModuleMentions(h)}</th>`)
+          .join("")}</tr></thead>`
+        : ""
+      }
             <tbody>
               ${rows
-                .map(
-                  (row) =>
-                    `<tr>${row
-                      .map((cell) => `<td>${decorateModuleMentions(cell)}</td>`)
-                      .join("")}</tr>`
-                )
-                .join("")}
+        .map(
+          (row) =>
+            `<tr>${row
+              .map((cell) => `<td>${decorateModuleMentions(cell)}</td>`)
+              .join("")}</tr>`
+        )
+        .join("")}
             </tbody>
           </table>
         </div>
@@ -452,8 +454,8 @@
       <section class="execution-flow">
         <div class="flow-track">
           ${steps
-            .map(
-              (step, index) => `
+        .map(
+          (step, index) => `
                 <article class="flow-step${index === activeIndex ? " active" : " dim"}">
                   <button
                     class="flow-step-button"
@@ -473,8 +475,8 @@
                   </button>
                 </article>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
         ${renderFlowDetailPanel(module, steps, activeIndex)}
       </section>
@@ -520,11 +522,10 @@
     return `
       <section class="custom-section custom-text-section ${section.variant || ""}" data-section-type="${section.type || "text"}">
         ${renderSectionHeader(section)}
-        ${
-          section.points && section.points.length
-            ? renderList(section.points, section.listClass || "plain-list")
-            : ""
-        }
+        ${section.points && section.points.length
+        ? renderList(section.points, section.listClass || "plain-list")
+        : ""
+      }
       </section>
     `;
   }
@@ -536,16 +537,16 @@
         ${renderSectionHeader(section)}
         <div class="custom-columns">
           ${columns
-            .map(
-              (column) => `
+        .map(
+          (column) => `
                 <section class="detail-block custom-column">
                   <h5>${decorateModuleMentions(column.title)}</h5>
                   ${column.text ? `<p>${decorateModuleMentions(column.text)}</p>` : ""}
                   ${renderList(column.items || [], column.listClass || "plain-list compact-list")}
                 </section>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
       </section>
     `;
@@ -558,8 +559,8 @@
         ${renderSectionHeader(section)}
         <div class="document-flow">
           ${items
-            .map(
-              (item, index) => `
+        .map(
+          (item, index) => `
                 <article class="document-flow-item">
                   <span>${String(index + 1).padStart(2, "0")}</span>
                   <h5>${decorateModuleMentions(item.title)}</h5>
@@ -567,8 +568,8 @@
                   ${item.output ? `<strong>${decorateModuleMentions(item.output)}</strong>` : ""}
                 </article>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
       </section>
     `;
@@ -593,15 +594,15 @@
         ${renderSectionHeader(section)}
         <div class="compare-grid">
           ${(section.items || [])
-            .map(
-              (item) => `
+        .map(
+          (item) => `
                 <article>
                   <h5>${decorateModuleMentions(item.title)}</h5>
                   <p>${decorateModuleMentions(item.text)}</p>
                 </article>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
       </section>
     `;
@@ -627,22 +628,21 @@
         ${renderSectionHeader(section)}
         <div class="flow-step-table-wrapper">
           <table class="flow-step-table">
-            ${
-              headers.length
-                ? `<thead><tr>${headers
-                    .map((h) => `<th>${decorateModuleMentions(h)}</th>`)
-                    .join("")}</tr></thead>`
-                : ""
-            }
+            ${headers.length
+        ? `<thead><tr>${headers
+          .map((h) => `<th>${decorateModuleMentions(h)}</th>`)
+          .join("")}</tr></thead>`
+        : ""
+      }
             <tbody>
               ${rows
-                .map(
-                  (row) =>
-                    `<tr>${row
-                      .map((cell) => `<td>${decorateModuleMentions(cell)}</td>`)
-                      .join("")}</tr>`
-                )
-                .join("")}
+        .map(
+          (row) =>
+            `<tr>${row
+              .map((cell) => `<td>${decorateModuleMentions(cell)}</td>`)
+              .join("")}</tr>`
+        )
+        .join("")}
             </tbody>
           </table>
         </div>
@@ -772,8 +772,8 @@
 
         <div class="quick-thumbs" aria-label="${selectedSet.title} 圖片縮圖">
           ${selectedSet.images
-            .map(
-              ([src, caption], index) => `
+        .map(
+          ([src, caption], index) => `
                 <button
                   class="thumb-button${index === activeIndex ? " active" : ""}"
                   type="button"
@@ -786,8 +786,8 @@
                   <span>${index + 1}</span>
                 </button>
               `
-            )
-            .join("")}
+        )
+        .join("")}
         </div>
 
         <div class="quick-viewer${isFirstImage ? " has-prev-chapter" : ""}${isLastImage ? " has-next-chapter" : ""}">
@@ -870,15 +870,15 @@
           </div>
           <ol class="overview-story-steps">
             ${storySteps
-              .map(
-                (step) => `
+        .map(
+          (step) => `
                   <li>
                     <strong>${decorateModuleMentions(step.title)}</strong>
                     <span>${decorateModuleMentions(step.text)}</span>
                   </li>
                 `
-              )
-              .join("")}
+        )
+        .join("")}
           </ol>
         </section>
         <figure class="overview-flow-figure">
@@ -1176,4 +1176,63 @@
   setupModuleSelect();
   renderModuleDetail(modules[0] && modules[0].id);
   markActiveNavigation();
+  setupIconToggle();
+
+  function setupIconToggle() {
+    // ① 注入 CSS 規則：body.hide-term-icons 時隱藏 .term-trigger 內的 .module-icon
+    if (!document.getElementById("term-icon-toggle-style")) {
+      const style = document.createElement("style");
+      style.id = "term-icon-toggle-style";
+      // 範圍涵蓋:① .term-trigger 內的 icon(有 tooltip 的詞);② .module-label 內的 icon
+      // (沒 tooltip 的純模組名,例如頁面標題、內文裡的模組名)。
+      // 保留:.select-module-icon、.overview-card-icon(屬於 UI 元素,非正文)。
+      style.textContent =
+        "body.hide-term-icons .term-trigger .module-icon," +
+        "body.hide-term-icons .module-label .module-icon{display:none;}" +
+        "body.hide-term-icons .term-trigger.term-trigger--module>span," +
+        "body.hide-term-icons .module-label>span{margin-left:0;}";
+      document.head.appendChild(style);
+    }
+
+    // ② 從 localStorage 讀初始狀態（預設為「隱藏」）
+    const STORAGE_KEY = "hideTermIcons";
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const initialHidden = stored === null ? true : stored === "1";
+    document.body.classList.toggle("hide-term-icons", initialHidden);
+
+    // ③ 在 .main-nav 中插入切換按鈕（在「頂部」之前）
+    const nav = document.querySelector(".main-nav");
+    if (!nav) return;
+    if (nav.querySelector(".term-icon-toggle")) return;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "nav-action term-icon-toggle";
+
+    function refreshLabel() {
+      const hidden = document.body.classList.contains("hide-term-icons");
+      btn.textContent = hidden ? "顯示模組圖示" : "隱藏模組圖示";
+      btn.setAttribute(
+        "aria-label",
+        hidden ? "顯示內文中模組名詞旁的圖示" : "隱藏模組名詞旁的圖示"
+      );
+      btn.setAttribute("aria-pressed", String(hidden));
+      btn.title = hidden
+        ? "目前已隱藏；點此顯示模組圖示"
+        : "目前已顯示；點此隱藏模組圖示";
+    }
+
+    btn.addEventListener("click", () => {
+      const nextHidden = !document.body.classList.contains("hide-term-icons");
+      document.body.classList.toggle("hide-term-icons", nextHidden);
+      localStorage.setItem(STORAGE_KEY, nextHidden ? "1" : "0");
+      refreshLabel();
+    });
+
+    refreshLabel();
+
+    const backToTop = nav.querySelector('a[href="#top"]');
+    if (backToTop) nav.insertBefore(btn, backToTop);
+    else nav.appendChild(btn);
+  }
 })();
